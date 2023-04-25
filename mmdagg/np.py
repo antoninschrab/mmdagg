@@ -30,7 +30,7 @@ def mmdagg(
         The shape of X must be of the form (m, d) where m is the number
         of samples and d is the dimension.
     Y: array_like
-        The shape of X must be of the form (n, d) where m is the number
+        The shape of Y must be of the form (n, d) where n is the number
         of samples and d is the dimension.
     alpha: scalar
         The value of alpha must be between 0 and 1.
@@ -310,6 +310,12 @@ def mmdagg(
         else:
             u_max = u
     u = u_min
+    for j in range(len(kernel_bandwidths_l_list)):
+        for i in range(number_bandwidths):
+            quantiles[number_bandwidths * j + i] = M1_sorted[
+                number_bandwidths * j + i, 
+                int(np.ceil((B1 + 1) * (1 - u * weights[i]))) - 1
+            ]
 
     # Step 3: output test result
     p_vals = np.mean((M1_sorted - MMD_original.reshape(-1, 1) >= 0), -1)
