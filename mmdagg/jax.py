@@ -40,7 +40,7 @@ def mmdagg(
         The shape of X must be of the form (m, d) where m is the number
         of samples and d is the dimension.
     Y: array_like
-        The shape of X must be of the form (n, d) where m is the number
+        The shape of Y must be of the form (n, d) where n is the number
         of samples and d is the dimension.
     alpha: scalar
         The value of alpha must be between 0 and 1.
