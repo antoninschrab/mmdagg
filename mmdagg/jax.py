@@ -5,7 +5,7 @@ from jax.flatten_util import ravel_pytree
 from functools import partial
 
 
-@partial(jit, static_argnums=(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12))
+@partial(jit, static_argnums=(2, 3, 4, 5, 6, 7, 8, 10, 11, 12))
 def mmdagg(
     X,
     Y,
@@ -338,11 +338,12 @@ def mmdagg(
                 # set diagonal elements to zero
                 K = K.at[jnp.diag_indices(K.shape[0])].set(0)
                 # compute MMD permuted values
+                # Appendix C of Schrab et al. MMD Aggregated Two-Sample test
                 M = M.at[number_bandwidths * j + i].set(
-                    jnp.sum(V10 * (K @ V10), 0) * (n - m + 1) / (m * n * (m - 1))
-                    + jnp.sum(V01 * (K @ V01), 0) * (m - n + 1) / (m * n * (n - 1))
+                    jnp.sum(V10 * (K @ V10), 0) * (1 / (m * (m - 1)) - 1 / (m * n))
+                    + jnp.sum(V01 * (K @ V01), 0) * (1 / (n * (n - 1)) - 1 / (m * n))
                     + jnp.sum(V11 * (K @ V11), 0) / (m * n)
-                )  
+                )
             else:
                 raise ValueError("Approximation type not defined.")           
     MMD_original = M[:, B1]
