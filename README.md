@@ -1,8 +1,8 @@
-# MMDAgg package
+# MMDAgg
 
 This package implements the MMDAgg test for two-sample testing, as proposed in our paper [MMD Aggregated Two-Sample Test](https://arxiv.org/pdf/2110.15073.pdf).
 The experiments of the paper can be reproduced using the [mmdagg-paper](https://github.com/antoninschrab/mmdagg-paper/) repository.
-The package contains implementations both in Numpy and in Jax, we recommend using the Jax version as it runs 100 times faster after compilation (results from the notebook [demo_speed.ipynb](https://github.com/antoninschrab/mmdagg-final/blob/main/demo_speed.ipynb) in the [mmdagg-paper](https://github.com/antoninschrab/mmdagg-paper/) repository). 
+The package contains implementations both in Numpy and in Jax, we recommend using the Jax version as it runs 100 times faster after compilation (results from the notebook [demo_speed.ipynb](https://github.com/antoninschrab/mmdagg-paper/blob/master/demo_speed.ipynb) in the [mmdagg-paper](https://github.com/antoninschrab/mmdagg-paper/) repository). 
 The notebook also contains a demo showing how to use our MMDAgg test.
 We also provide installation instructions and example code below.
 
@@ -55,7 +55,7 @@ pip install git+https://github.com/antoninschrab/mmdagg.git
 **Jax compilation:** The first time the function is evaluated, Jax compiles it. 
 After compilation, it can fastly be evaluated at any other X and Y of the same shape. 
 If the function is given arrays with new shapes, the function is compiled again.
-For details, check out the [demo_speed.ipynb](https://github.com/antoninschrab/mmdagg-final/blob/main/demo_speed.ipynb) notebook on the [mmdagg-paper](https://github.com/antoninschrab/mmdagg-paper/) repository.
+For details, check out the [demo_speed.ipynb](https://github.com/antoninschrab/mmdagg-paper/blob/master/demo_speed.ipynb) notebook on the [mmdagg-paper](https://github.com/antoninschrab/mmdagg-paper/) repository.
 
 ```python
 # import modules
