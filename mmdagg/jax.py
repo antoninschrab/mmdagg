@@ -405,7 +405,7 @@ def mmdagg(
             reject_dictionary[index]["Bandwidth"] = bandwidths[i]
             reject_dictionary[index]["MMD"] = mmd_vals[idx]
             reject_dictionary[index]["MMD quantile"] = quantiles[idx]
-            reject_dictionary[index]["p-value"] = p_vals[i]
+            reject_dictionary[index]["p-value"] = p_vals[idx]
             reject_dictionary[index]["p-value threshold"] = thresholds[idx]
             # Aggregated test rejects if one single test rejects
             reject_dictionary["MMDAgg test reject"] = jnp.any(ravel_pytree(
